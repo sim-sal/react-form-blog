@@ -4,12 +4,14 @@ import { useState } from "react";
 
 export default function MyFormData() {
 
-    const [postsList, setPostsList] = useState([]);
-
-    const [formData, setFormData] = useState({
+    const initialFormData = {
         title_post: "",
         content_post: ""
-    })
+    }
+
+    const [postsList, setPostsList] = useState([]);
+
+    const [formData, setFormData] = useState({ initialFormData })
 
     function updateFormData(newValue, fieldName) {
 
@@ -28,10 +30,7 @@ export default function MyFormData() {
         setPostsList([...postsList, formData]);
 
         // resetto il form per svuotare i campi input
-        setFormData({
-            title_post: "",
-            content_post: ""
-        });
+        setFormData({ initialFormData });
     }
 
     return (
